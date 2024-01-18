@@ -1,13 +1,16 @@
 <?php
 
+use Alura\DesignPatern\CalculadoraDeDescontos;
+
 use Alura\DesignPatern\Orcamento;
-use Alura\DesignPatern\CalculadoraDeImpostos;
 
 require "vendor/autoload.php";
 
-$calculadora =  new CalculadoraDeImpostos();
+$calculadora =  new CalculadoraDeDescontos();
 
-$orcamento = new Orcamento();
-$orcamento->valor = 100;
+$orcamento = new Orcamento(); 
+$orcamento->valor = 600;
+$orcamento->quantidadeItems = 6;
 
-echo $calculadora->calcula($orcamento,"ISS");
+echo $calculadora->calculaDesconto($orcamento);
+
