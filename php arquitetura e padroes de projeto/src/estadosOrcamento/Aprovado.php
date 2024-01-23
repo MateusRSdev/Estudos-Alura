@@ -3,7 +3,7 @@
 namespace Alura\DesignPatern\estadosOrcamento;
 use Alura\DesignPatern\Orcamento;
 
-class EmAprovacao{
+class Aprovado{
     public function calculaDescontoExtra(Orcamento $orcamento) : float {
         return $orcamento->valor * 0.02;
     }
