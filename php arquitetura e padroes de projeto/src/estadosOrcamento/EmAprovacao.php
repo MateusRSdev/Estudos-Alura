@@ -10,7 +10,7 @@ class EmAprovacao extends EstadoOrcamento{
     public function aprova(Orcamento $orcamento) {
         $orcamento->estadoAtual = new Aprovado();
     }
-    public function reprova(Orcamento $orcamento) {
+    public function reprovado(Orcamento $orcamento) {
         $orcamento->estadoAtual =  new Reprovado();
     }
 

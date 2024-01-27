@@ -21,10 +21,10 @@ class Orcamento
         $this->estadoAtual->aprova($this);
     }
     public function reprova(){
-        $this->estadoAtual->aprova($this);
+        $this->estadoAtual->reprovado($this);
     }
     public function finaliza(){
-        $this->estadoAtual->aprova($this);
+        $this->estadoAtual->finaliza($this);
     }
 
 

@@ -2,10 +2,26 @@
 
 namespace Alura\DesignPatern;
 
+use Alura\DesignPatern\acoesAoGerarPedido\AcaoAposGerarPedido;
+use Alura\DesignPatern\acoesAoGerarPedido\CriaPedidoNoBanco;
+use Alura\DesignPatern\acoesAoGerarPedido\EmviarPedidoPorEmail;
+use Alura\DesignPatern\acoesAoGerarPedido\GerarLogDoPedido;
 use DateTimeImmutable;
 
-class GeraPedido
+
+class GerarPedidoHandler
 {
+    /** @var AcaoAposGerarPedido[] */
+    private array $acoesAoGerarPedido = [];
+
+    public function __construct(){
+        
+    }
+
+    public function adicionarAcaoAoGerarPedido(AcaoAposGerarPedido $acao)
+    {
+        $this->acoesAoGerarPedido[] = $acao;
+    }
 
     public function execute(GeraPedido $geraPedido)
     {
@@ -18,6 +34,8 @@ class GeraPedido
         $pedido->nomeCliente = $geraPedido->getNomeCliente();
         $pedido->orcamento = $orcamento;
 
-        echo "cria pedido no banco de dados " . PHP_EOL; 
+        foreach ($this->acoesAoGerarPedido as $acao) {
+            $acao->executaAcao($pedido);
+        }
     }
 }
