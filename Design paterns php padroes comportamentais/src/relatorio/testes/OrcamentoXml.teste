@@ -1,0 +1,16 @@
+<?php
+namespace Alura\DesignPatern\relatorio;
+
+use Alura\DesignPatern\Orcamento;
+
+class OrcamentoXml{
+
+    public function exportar(Orcamento $orcamento): string {
+        $elementoOrcamento = new \SimpleXMLElement("<orcamento\>");
+        $elementoOrcamento->addChild("valor",$orcamento->valor);
+        $elementoOrcamento->addChild("quantidade_items",$orcamento->quantidadeItems);
+
+        return $elementoOrcamento->asXML();
+    }
+
+}
